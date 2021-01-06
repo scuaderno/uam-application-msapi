@@ -1,0 +1,18 @@
+{
+  "sampleData": {
+    "edf14b95-6f0c-4525-8efe-29c2ec88bdef": {
+      "payload": "sample_data/list_object.dwl"
+    },
+    "01f89573-9a0a-44f4-8bc7-f7902a82f9fb": {
+      "payload": "sample_data/list_object_1.dwl"
+    },
+    "be9f043e-00b8-4d54-8fb2-290d037c32bb": {
+      "vars-header": "sample_data/defaultstringtype.dwl"
+    },
+    "193c6dd6-361b-4d50-b93b-61fdba52bf61": {},
+    "5c0ead80-29ad-4bf8-9302-2a705eebce11": {},
+    "c5cdf528-82c8-48f0-b890-1eb68a9d57cb": {
+      "payload": "sample_data/json.json"
+    }
+  }
+}

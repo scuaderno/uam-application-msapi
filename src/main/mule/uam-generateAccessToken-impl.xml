@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:salesforce="http://www.mulesoft.org/schema/mule/salesforce" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mule/salesforce/current/mule-salesforce.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+    <configuration-properties file="mule-artifact.properties"/>
+    <http:request-config doc:id="66cdd2e2-7381-4b94-8f43-81f96cab9b5c" doc:name="HTTP Request" doc:timestamp="1608254810251" name="http_request_accessToken"/>
+    <salesforce:sfdc-config doc:id="3591c6b9-b610-400c-9345-f5b1854b5094" doc:name="Salesforce" doc:timestamp="1608292784066" name="salesforce">
+        <salesforce:oauth-user-pass-connection consumerKey="3MVG9pcaEGrGRoTK1YnIfbJJUQ4O2r8PCEruTnbMw.xI3Uyd5fSa9I.rDJnNQcAL1HH_qmoGSdeVgW0C4sIpk" consumerSecret="6D16D29C4FD3B916245562937130ADA41A70300C2A01591CAEE5D11495E50457" username="sharongracef.cuaderno@pccw.com" password="w3ap0nRon08%" securityToken="ExLCE3LNVERqaYP1kFWAEkGfs" tokenEndpoint="https://here2serve--dev1auamv1.my.salesforce.com/services/oauth2/token"/>
+    </salesforce:sfdc-config>
+    <flow doc:id="33588e90-7ca0-4091-91f9-e23de683b90d" doc:name="New Flow" doc:timestamp="1608254597780" name="callToAccessTokenFlow">
+        <http:request config-ref="http_request_accessToken" doc:id="be9f043e-00b8-4d54-8fb2-290d037c32bb" doc:name="http_request_accessToken" doc:timestamp="1609295325533" url="https://here2serve--dev1auamv1.my.salesforce.com/services/oauth2/token" method="POST">
+		</http:request>
+		<logger level="INFO" doc:name="Logger" doc:id="cb052c8a-2d3a-429c-a3e0-1cf36914f3a6" />
+    
+</flow>
+</mule>

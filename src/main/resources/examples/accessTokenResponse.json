@@ -1,0 +1,8 @@
+{
+    "access_token": "00D1s0000008oEJ!ARcAQMnePR5qn7YsrAjYrmzGtd2bBEwVLtnMZc.Ep2qjx7iNMa0UVO2INLPskozsD_pWzRNZmPupPefBL2u3cpNs8xPwl3Jt",
+    "instance_url": "https://here2serve--dev1auamv1.my.salesforce.com",
+    "id": "https://test.salesforce.com/id/00D1s0000008oEJEAY/0051s0000014webAAA",
+    "token_type": "Bearer",
+    "issued_at": "1609803256430",
+    "signature": "DOKcjq101fPJ7S0zuudR4E5J9khNBncBwVOUm3vj0yI="
+}

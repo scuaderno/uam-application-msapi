@@ -1,0 +1,45 @@
+#%RAML 1.0
+title: uam-application-allApplication-sys-api-v1
+description: Get all list of user roles
+version: "1"
+protocols:
+  - HTTP
+  - HTTPS
+/submitCallToSf:
+  get:
+    responses:
+      "200":
+        body:
+          application/json:
+            items:
+              type: query
+    securedBy: []
+types:
+  query:
+    properties:
+      totalSize:
+        example: "128"
+        type: string
+      done:
+        example: "true"
+        type: string
+      records:
+        items:
+          properties:
+            attributes:
+              properties:
+                type:
+                  example: UserRole
+                  type: string
+                url:
+                  example: /services/data/v50.0/sobjects/UserRole/00E1s000000SJdjEAG
+                  type: string
+            Id:
+              example: 00E1s000000SJdjEAG
+              type: string
+            Name:
+              example: Assistance Manager
+              type: string
+            DeveloperName:
+              example: Assistance_Manager
+              type: string
