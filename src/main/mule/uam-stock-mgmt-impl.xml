@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<configuration-properties file="mule-artifact.properties"/>
+	<http:request-config name="http_request_heroku" doc:name="HTTP Request configuration" doc:id="c81c167f-4115-4f16-b3f2-2ab2cfffbe2f" />
+	<flow name="post:\createHerokuUser:uam-stock-heroku-implFlow" doc:id="94437899-d10d-4ded-9be4-7ddf44aa2e6d" >
+		<http:listener config-ref="uam-application-interface-api-httpListenerConfig" path="/createHerokuUser">
+		</http:listener>
+		<http:request method="POST" doc:name="Request" doc:id="279c5ddc-32bc-4bbe-a160-0c01181a9b7f" config-ref="http_request_heroku" url="http://localhost:8080/uamapi/stockapp/mockApi"/>
+		<logger level="INFO" doc:name="Logger" doc:id="6fd295c2-a0bf-41af-af38-c8c710315351" />
+	</flow>
+</mule>
