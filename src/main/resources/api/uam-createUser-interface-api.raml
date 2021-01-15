@@ -1,0 +1,59 @@
+#%RAML 1.0
+types:
+  Create-User:
+    properties:
+      allowSaveOnDuplicate:
+        default: false
+        example: true
+        type: boolean
+      apiName:
+        example: User
+        type: string
+      fields:
+        properties:
+          LastName:
+            example: TestLName001
+            type: string
+          FirstName:
+            example: TestFname001
+            type: string
+          Alias:
+            example: Alias1
+            type: string
+            maxLength: 8
+          Email:
+            example: toygiver@kakekbet.com
+            type: string
+          Username:
+            example: toygiver@kakekbet.com
+            type: string
+          EmailEncodingKey:
+            example: ISO-8859-1
+            type: string
+          TimeZoneSidKey:
+            example: Asia/Hong_Kong
+            type: string
+          LocaleSidKey:
+            example: en_HK
+            type: string
+          LanguageLocaleKey:
+            example: en_US
+            type: string
+          ProfileId:
+            example: 00e2w000001pnPoAAI
+            type: string
+title: uam-createUser-sys-api-v1
+description: Creates User in Salesforce
+mediaType:
+  - application/json
+version: "1"
+protocols:
+  - HTTP
+  - HTTPS
+/createUserToSf:
+  post:
+    responses:
+      "200":
+        body:
+          items:
+            type: Create-User

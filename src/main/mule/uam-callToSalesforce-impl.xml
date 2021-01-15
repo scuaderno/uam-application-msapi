@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:salesforce="http://www.mulesoft.org/schema/mule/salesforce" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mule/salesforce/current/mule-salesforce.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+    <configuration-properties file="mule-artifact.properties"/>
+    <http:request-config doc:id="66cdd2e2-7381-4b94-8f43-81f96cab9b5c" doc:name="HTTP Request" doc:timestamp="1608254810251" name="http_request_querySfApexUser"/>
+    <http:request-config name="HTTP_Request_createUserToSf" doc:name="HTTP Request configuration" doc:id="0aa22c6e-b358-461c-aced-3e1f40758a90" />
+	<flow doc:id="33588e90-7ca0-4091-91f9-e23de683b90d" doc:name="callToCreateUserFlow" doc:timestamp="1608254597780" name="post:\createUserToSf:callToCreateUserFlow">
+		<http:listener doc:name="Listener" doc:id="3bd435f7-80c6-483d-ba79-17cc89b7137f" config-ref="uam-application-interface-api-httpListenerConfig" path="/createUserToSf"/>
+		<http:request config-ref="HTTP_Request_createUserToSf" doc:id="be9f043e-00b8-4d54-8fb2-290d037c32bb" doc:name="http_request_createUserToSf" doc:timestamp="1609295325533" url="https://here2serve--dev1auamv1.my.salesforce.com/services/data/v50.0/ui-api/records" method="POST">
+			<http:headers ><![CDATA[#[output application/java
+---
+{
+	"Authorization" : "Bearer 00D1s0000008oEJ!ARcAQIx5B8UHFMtkZhOd9qi9dHOiK0CG_d_IZcpk.8zZcFAhhjzEgQsecK2hK8jdmJgvTi3yDSygnpa2qejSoVHVKX.Kl7jc",
+	"Content-Type" : "application/json"
+}]]]></http:headers>
+		</http:request>
+		
+		<logger level="INFO" doc:name="Logger" doc:id="cb052c8a-2d3a-429c-a3e0-1cf36914f3a6" />
+    
+</flow>
+	<flow name="get:\querySfApexUser:querySfApexUserFlow" doc:id="fa840dc5-81dc-4445-8a1d-5be2ea17d4db" >
+		<http:listener doc:name="Listener" doc:id="33cf1c93-6e28-4d92-8876-5839fd94e004" config-ref="uam-application-interface-api-httpListenerConfig" path="/querySfApexUserFlow" />
+		<http:request method="GET" doc:name="http_request_querySfApexUser" doc:id="2e41811f-ea69-4335-bdd5-e0d319bbb486" config-ref="http_request_querySfApexUser" url="https://here2serve--dev1auamv1.my.salesforce.com/services/apexrest/Users/" >
+			<http:headers ><![CDATA[#[output application/java
+---
+{
+	"Authorization" : "Bearer 00D1s0000008oEJ!ARcAQIx5B8UHFMtkZhOd9qi9dHOiK0CG_d_IZcpk.8zZcFAhhjzEgQsecK2hK8jdmJgvTi3yDSygnpa2qejSoVHVKX.Kl7jc",
+	"Content-Type" : "application/json"
+}]]]></http:headers>
+		</http:request>
+		<logger level="INFO" doc:name="Logger" doc:id="d2b7d367-859f-4ff3-a605-833d6866a2b9" />
+	</flow>
+</mule>
