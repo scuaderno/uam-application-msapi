@@ -16,13 +16,13 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	<flow name="get:\userGetAllUsers:uam-stock-heroku-implFlow" doc:id="aa63554b-61e6-40a9-b2aa-c6529d9c4e34" >
 		<http:listener config-ref="uam-application-interface-api-httpListenerConfig" path="/userGetAllUsers">
 		</http:listener>
-		<http:request method="GET" doc:name="Request" doc:id="63711620-d7bc-46d3-a049-17277ec0de5c" config-ref="http_request_heroku" url="http://localhost:4003/uam-api/api/uamstockapp/mockApiGET"/>
+		<http:request method="GET" doc:name="Request" doc:id="63711620-d7bc-46d3-a049-17277ec0de5c" config-ref="http_request_heroku" url="http://localhost:4003/uam-api/api/uamstockapp/mockApiGET?message=user"/>
 		<logger level="INFO" doc:name="Logger" doc:id="2fcd8a8c-605a-4030-9ea7-40d13ecffe29" />
 	</flow>
 	<flow name="get:\userGetUsers:uam-stock-heroku-implFlow" doc:id="a9346808-a061-47c4-8166-338f78a10279" >
 		<http:listener config-ref="uam-application-interface-api-httpListenerConfig" path="/userGetUsers">
 		</http:listener>
-		<http:request method="GET" doc:name="Request" doc:id="72f46170-d6cd-4f6b-8777-ac946dad6d7a" config-ref="http_request_heroku" url="http://localhost:4003/uam-api/api/uamstockapp/mockApiGET"/>
+		<http:request method="GET" doc:name="Request" doc:id="72f46170-d6cd-4f6b-8777-ac946dad6d7a" config-ref="http_request_heroku" url="http://localhost:4003/uam-api/api/uamstockapp/mockApiGET?message=user"/>
 		<logger level="INFO" doc:name="Logger" doc:id="21e8e609-b462-4f0b-a749-6785b29f031b" />
 	</flow>
 	<flow name="put:\userUpdate:uam-stock-heroku-implFlow" doc:id="ac39ea77-1a5a-497d-ac61-18a95bd36649" >
@@ -46,13 +46,13 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	<flow name="get:\roleGetAllRole:uam-stock-heroku-implFlow" doc:id="fd1d3af1-4dd4-4783-abec-cfc3e35df43a" >
 		<http:listener config-ref="uam-application-interface-api-httpListenerConfig" path="/roleGetAllRole">
 		</http:listener>
-		<http:request method="GET" doc:name="Request" doc:id="2d185898-11a2-48be-b82b-da3e3c6fb846" config-ref="http_request_heroku" url="http://localhost:4003/uam-api/api/uamstockapp/mockApiGET"/>
+		<http:request method="GET" doc:name="Request" doc:id="2d185898-11a2-48be-b82b-da3e3c6fb846" config-ref="http_request_heroku" url="http://localhost:4003/uam-api/api/uamstockapp/mockApiGET?message=role"/>
 		<logger level="INFO" doc:name="Logger" doc:id="b2984e69-3ccc-4087-a3ae-1e74fa0f9310" />
 	</flow>
 	<flow name="get:\roleGetRole:uam-stock-heroku-implFlow" doc:id="9bb86a04-924d-41fa-9de9-358a59a87cef" >
 		<http:listener config-ref="uam-application-interface-api-httpListenerConfig" path="/roleGetRole">
 		</http:listener>
-		<http:request method="GET" doc:name="Request" doc:id="4fbe9d39-9ed0-46c6-baf8-3b8ea42e88b4" config-ref="http_request_heroku" url="http://localhost:4003/uam-api/api/uamstockapp/mockApiGET"/>
+		<http:request method="GET" doc:name="Request" doc:id="4fbe9d39-9ed0-46c6-baf8-3b8ea42e88b4" config-ref="http_request_heroku" url="http://localhost:4003/uam-api/api/uamstockapp/mockApiGET?message=role"/>
 		<logger level="INFO" doc:name="Logger" doc:id="dcbf495a-5d29-4448-8586-9babd481dde0" />
 	</flow>
 	<flow name="put:\roleUpdate:uam-stock-heroku-implFlow" doc:id="8d0ddd03-eb45-41cd-875a-59aec603c620" >
@@ -76,13 +76,13 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	<flow name="get:\roleFunctionMappingGetAllMapping:uam-stock-heroku-implFlow" doc:id="d90a3cb7-7df1-4e75-bad4-74a8f335fcb1" >
 		<http:listener config-ref="uam-application-interface-api-httpListenerConfig" path="/roleFunctionMappingGetAllMapping">
 		</http:listener>
-		<http:request method="GET" doc:name="Request" doc:id="de18c392-d478-4b07-9c75-6a417e958a16" config-ref="http_request_heroku" url="http://localhost:4003/uam-api/api/uamstockapp/mockApiGET"/>
+		<http:request method="GET" doc:name="Request" doc:id="de18c392-d478-4b07-9c75-6a417e958a16" config-ref="http_request_heroku" url="http://localhost:4003/uam-api/api/uamstockapp/mockApiGET?message=roleFunction"/>
 		<logger level="INFO" doc:name="Logger" doc:id="4c49faca-3146-44a9-ac45-67929f882b8b" />
 	</flow>
 	<flow name="get:\roleFunctionMappingGetMapping:uam-stock-heroku-implFlow" doc:id="16f7b914-daae-4448-ae36-8b77b9b7607e" >
 		<http:listener config-ref="uam-application-interface-api-httpListenerConfig" path="/roleFunctionMappingGetMapping">
 		</http:listener>
-		<http:request method="GET" doc:name="Request" doc:id="00222ad0-9171-42ab-a937-f4237d893fae" config-ref="http_request_heroku" url="http://localhost:4003/uam-api/api/uamstockapp/mockApiGET"/>
+		<http:request method="GET" doc:name="Request" doc:id="00222ad0-9171-42ab-a937-f4237d893fae" config-ref="http_request_heroku" url="http://localhost:4003/uam-api/api/uamstockapp/mockApiGET?message=roleFunction"/>
 		<logger level="INFO" doc:name="Logger" doc:id="e2a4f963-ac7f-49e5-9ffa-11a3f37c28ed" />
 	</flow>
 	<flow name="put:\roleFunctionMappingUpdate:uam-stock-heroku-implFlow" doc:id="42db2f6d-28de-4ec6-8554-b24f01bfd555" >
@@ -106,13 +106,13 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	<flow name="get:\userRoleMappingGetAllMapping:uam-stock-heroku-implFlow" doc:id="00af9643-ae97-440b-8756-09f70bedda9e" >
 		<http:listener config-ref="uam-application-interface-api-httpListenerConfig" path="/userRoleMappingGetAllMapping">
 		</http:listener>
-		<http:request method="GET" doc:name="Request" doc:id="4ae1a5e7-c831-4bd6-9d94-65825a067cdc" config-ref="http_request_heroku" url="http://localhost:4003/uam-api/api/uamstockapp/mockApiGET"/>
+		<http:request method="GET" doc:name="Request" doc:id="4ae1a5e7-c831-4bd6-9d94-65825a067cdc" config-ref="http_request_heroku" url="http://localhost:4003/uam-api/api/uamstockapp/mockApiGET?message=roleChannel"/>
 		<logger level="INFO" doc:name="Logger" doc:id="6df4c64f-a0ff-4b33-a8ee-570b929efb49" />
 	</flow>
 	<flow name="get:\userRoleMappingGetMapping:uam-stock-heroku-implFlow" doc:id="1ba8c8d1-c4cf-4f72-8b11-1a544f5a07ed" >
 		<http:listener config-ref="uam-application-interface-api-httpListenerConfig" path="/userRoleMappingGetMapping">
 		</http:listener>
-		<http:request method="GET" doc:name="Request" doc:id="9272600b-5e01-428d-a359-5f2a9d97f65b" config-ref="http_request_heroku" url="http://localhost:4003/uam-api/api/uamstockapp/mockApiGET"/>
+		<http:request method="GET" doc:name="Request" doc:id="9272600b-5e01-428d-a359-5f2a9d97f65b" config-ref="http_request_heroku" url="http://localhost:4003/uam-api/api/uamstockapp/mockApiGET?message=roleChannel"/>
 		<logger level="INFO" doc:name="Logger" doc:id="5a331055-83f5-4e17-81e6-e431ea207586" />
 	</flow>
 	<flow name="put:\userRoleMappingUpdate:uam-stock-heroku-implFlow" doc:id="61b8b439-2cd5-416f-96d6-1a663af0963f" >
@@ -130,19 +130,19 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	<flow name="get:\functionGetAllFunction:uam-stock-heroku-implFlow" doc:id="248b8944-ee64-41cf-b436-8d431634a21d" >
 		<http:listener config-ref="uam-application-interface-api-httpListenerConfig" path="/functionGetAllFunction">
 		</http:listener>
-		<http:request method="GET" doc:name="Request" doc:id="c74acdfd-4342-48ba-ac8c-adad010746f9" config-ref="http_request_heroku" url="http://localhost:4003/uam-api/api/uamstockapp/mockApiGET"/>
+		<http:request method="GET" doc:name="Request" doc:id="c74acdfd-4342-48ba-ac8c-adad010746f9" config-ref="http_request_heroku" url="http://localhost:4003/uam-api/api/uamstockapp/mockApiGET?message=function"/>
 		<logger level="INFO" doc:name="Logger" doc:id="4b86b501-7263-4513-a792-7808feb16202" />
 	</flow>
 	<flow name="get:\shopGetAllShop:uam-stock-heroku-implFlow" doc:id="5201a494-24c4-4557-afcc-e60d6af11a45" >
 		<http:listener config-ref="uam-application-interface-api-httpListenerConfig" path="/shopGetAllShop">
 		</http:listener>
-		<http:request method="GET" doc:name="Request" doc:id="ee0e60fc-6ed0-411f-b727-b876631f8e57" config-ref="http_request_heroku" url="http://localhost:4003/uam-api/api/uamstockapp/mockApiGET"/>
+		<http:request method="GET" doc:name="Request" doc:id="ee0e60fc-6ed0-411f-b727-b876631f8e57" config-ref="http_request_heroku" url="http://localhost:4003/uam-api/api/uamstockapp/mockApiGET?message=shop"/>
 		<logger level="INFO" doc:name="Logger" doc:id="73159002-6f11-409b-971f-31ce0781fb20" />
 	</flow>
 	<flow name="get:\channelGetAllChannel:uam-stock-heroku-implFlow" doc:id="349d13f5-8f3b-4f0d-8a41-9c09e96bd2a6" >
 		<http:listener config-ref="uam-application-interface-api-httpListenerConfig" path="/channelGetAllChannel">
 		</http:listener>
-		<http:request method="GET" doc:name="Request" doc:id="13208d36-20fb-4b6f-bcc5-7c67fe50ac79" config-ref="http_request_heroku" url="http://localhost:4003/uam-api/api/uamstockapp/mockApiGET"/>
+		<http:request method="GET" doc:name="Request" doc:id="13208d36-20fb-4b6f-bcc5-7c67fe50ac79" config-ref="http_request_heroku" url="http://localhost:4003/uam-api/api/uamstockapp/mockApiGET?message=channel"/>
 		<logger level="INFO" doc:name="Logger" doc:id="093c7852-538c-447d-9e66-c16a84019614" />
 	</flow>
 </mule>
