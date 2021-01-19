@@ -7,11 +7,41 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	<http:request-config name="http_request_querySfApexUser" doc:name="HTTP Request configuration" doc:id="e9f43f00-00cd-4124-8850-8a9550e1d974" />
 	<flow doc:id="33588e90-7ca0-4091-91f9-e23de683b90d" doc:name="callToCreateUserFlow" doc:timestamp="1608254597780" name="post:\createUserToSf:callToCreateUserFlow">
 		<http:listener doc:name="Listener" doc:id="3bd435f7-80c6-483d-ba79-17cc89b7137f" config-ref="uam-application-interface-api-httpListenerConfig" path="/createUserToSf"/>
+		<set-payload value='#[%dw 2.0
+output application/x-www-form-urlencoded
+---
+{
+      "grant_type":"password" as String,
+      "client_id":"3MVG9pcaEGrGRoTK1YnIfbJJUQ4O2r8PCEruTnbMw.xI3Uyd5fSa9I.rDJnNQcAL1HH_qmoGSdeVgW0C4sIpk" as String,
+      "client_secret":"6D16D29C4FD3B916245562937130ADA41A70300C2A01591CAEE5D11495E50457" as String,
+      "username":"sharongracef.cuaderno@pccw.com" as String,
+      "password":"w3ap0nRon08%ExLCE3LNVERqaYP1kFWAEkGfs"  as String
+ }]' doc:name="Set Payload" doc:id="f18f7d4e-5f73-448b-9af8-405dc568ae51" />
+		<flow-ref doc:name="Flow Reference" doc:id="d8ec35a1-0759-4ebd-9269-f544f908e76d" name="callToAccessTokenFlow"/>
 		<http:request config-ref="HTTP_Request_createUserToSf" doc:id="be9f043e-00b8-4d54-8fb2-290d037c32bb" doc:name="http_request_createUserToSf" doc:timestamp="1609295325533" url="https://here2serve--dev1auamv1.my.salesforce.com/services/data/v50.0/ui-api/records" method="POST">
+			<http:body ><![CDATA[#[%dw 2.0
+output application/json
+---
+{
+  "allowSaveOnDuplicate": false as Boolean,
+  "apiName": "User" as String,
+  "fields": {
+    "LastName": "testMuleLname04" as String,
+    "FirstName": "testMuleFname04" as String,
+    "Alias": "Alias4" as String,
+    "Email": "testMule04@pccw.com" as String,
+    "Username": "testMule04@pccw.com" as String,
+    "EmailEncodingKey": "ISO-8859-1" as String,
+    "TimeZoneSidKey": "Asia/Hong_Kong" as String,
+    "LocaleSidKey": "en_HK" as String,
+    "LanguageLocaleKey": "en_US" as String,
+    "ProfileId": "00e2w000001pnPoAAI" as String
+  }
+}]]]></http:body>
 			<http:headers ><![CDATA[#[output application/java
 ---
 {
-	"Authorization" : "Bearer 00D1s0000008oEJ!ARcAQIx5B8UHFMtkZhOd9qi9dHOiK0CG_d_IZcpk.8zZcFAhhjzEgQsecK2hK8jdmJgvTi3yDSygnpa2qejSoVHVKX.Kl7jc",
+	"Authorization" : payload.token_type as String ++ " " ++ payload.access_token as String,
 	"Content-Type" : "application/json"
 }]]]></http:headers>
 		</http:request>
@@ -21,11 +51,22 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 </flow>
 	<flow name="get:\querySfApexUser:querySfApexUserFlow" doc:id="fa840dc5-81dc-4445-8a1d-5be2ea17d4db" >
 		<http:listener doc:name="Listener" doc:id="33cf1c93-6e28-4d92-8876-5839fd94e004" config-ref="uam-application-interface-api-httpListenerConfig" path="/querySfApexUserFlow" />
+		<set-payload value='#[%dw 2.0
+output application/x-www-form-urlencoded
+---
+{
+      "grant_type":"password" as String,
+      "client_id":"3MVG9pcaEGrGRoTK1YnIfbJJUQ4O2r8PCEruTnbMw.xI3Uyd5fSa9I.rDJnNQcAL1HH_qmoGSdeVgW0C4sIpk" as String,
+      "client_secret":"6D16D29C4FD3B916245562937130ADA41A70300C2A01591CAEE5D11495E50457" as String,
+      "username":"sharongracef.cuaderno@pccw.com" as String,
+      "password":"w3ap0nRon08%ExLCE3LNVERqaYP1kFWAEkGfs"  as String
+ }]' doc:name="Set Payload" doc:id="d16ac6be-cd07-4c6e-af5e-e4f4930a2161" />
+		<flow-ref doc:name="Flow Reference" doc:id="ed5f914a-36ec-4b15-92ea-744e2f7b0e11" name="callToAccessTokenFlow"/>
 		<http:request method="GET" doc:name="http_request_querySfApexUser" doc:id="2e41811f-ea69-4335-bdd5-e0d319bbb486" config-ref="http_request_querySfApexUser" url="https://here2serve--dev1auamv1.my.salesforce.com/services/apexrest/Users/" >
 			<http:headers ><![CDATA[#[output application/java
 ---
 {
-	"Authorization" : "Bearer 00D1s0000008oEJ!ARcAQIx5B8UHFMtkZhOd9qi9dHOiK0CG_d_IZcpk.8zZcFAhhjzEgQsecK2hK8jdmJgvTi3yDSygnpa2qejSoVHVKX.Kl7jc",
+	"Authorization" : payload.token_type as String ++ " " ++ payload.access_token as String,
 	"Content-Type" : "application/json"
 }]]]></http:headers>
 		</http:request>
@@ -33,11 +74,34 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	</flow>
 	<flow name="patch:\updateSfApexUser:updateSfApexUser" doc:id="0e6c26fe-6fad-4292-bcc2-f7711aed6d63" >
 		<http:listener doc:name="Listener" doc:id="421d9690-0a82-4f39-9780-704571c78262" config-ref="uam-application-interface-api-httpListenerConfig" path="/updateSfApexUser" />
-		<http:request method="PATCH" doc:name="http_request_updateSfApexUser" doc:id="db9c06cc-6b37-42d5-8070-31492c129c08" config-ref="http_request_querySfApexUser" url="https://here2serve--dev1auamv1.my.salesforce.com/services/data/v50.0/ui-api/records/0051s0000015piDAAQ" >
+		<set-payload value='#[%dw 2.0
+output application/x-www-form-urlencoded
+---
+{
+      "grant_type":"password" as String,
+      "client_id":"3MVG9pcaEGrGRoTK1YnIfbJJUQ4O2r8PCEruTnbMw.xI3Uyd5fSa9I.rDJnNQcAL1HH_qmoGSdeVgW0C4sIpk" as String,
+      "client_secret":"6D16D29C4FD3B916245562937130ADA41A70300C2A01591CAEE5D11495E50457" as String,
+      "username":"sharongracef.cuaderno@pccw.com" as String,
+      "password":"w3ap0nRon08%ExLCE3LNVERqaYP1kFWAEkGfs"  as String
+ }]' doc:name="Set Payload" doc:id="dbc20a30-0511-48df-9ef8-3d299022a0c5" />
+		<flow-ref doc:name="Flow Reference" doc:id="3f855603-7094-411f-a4ed-52f40e9b7ab9" name="callToAccessTokenFlow" />
+		<http:request method="PATCH" doc:name="http_request_updateSfApexUser" doc:id="db9c06cc-6b37-42d5-8070-31492c129c08" config-ref="http_request_updateSfApexUser" url="https://here2serve--dev1auamv1.my.salesforce.com/services/data/v50.0/ui-api/records/0051s0000015piDAAQ" >
+			<http:body ><![CDATA[#[%dw 2.0
+output application/json
+---
+{
+  "allowSaveOnDuplicate": false as Boolean,
+  "fields": {
+    "LastName": "editLastName04" as String,
+    "FirstName": "editFirstName04" as String,
+    "Email": "aabxz04@pccw.com" as String,
+    "Username": "aabxz04@pccw.com" as String
+  }
+}]]]></http:body>
 			<http:headers ><![CDATA[#[output application/java
 ---
 {
-	"Authorization" : "Bearer 00D1s0000008oEJ!ARcAQIx5B8UHFMtkZhOd9qi9dHOiK0CG_d_IZcpk.8zZcFAhhjzEgQsecK2hK8jdmJgvTi3yDSygnpa2qejSoVHVKX.Kl7jc",
+	"Authorization" : payload.token_type as String ++ " " ++ payload.access_token as String,
 	"Content-Type" : "application/json"
 }]]]></http:headers>
 		</http:request>
